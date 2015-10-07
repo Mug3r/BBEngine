@@ -6,10 +6,34 @@
 
 package Graphics;
 
+import Entities.Enemies;
+import Entities.Player;
+import Map.Map;
+import java.awt.Graphics;
+
 /**
  *
  * @author muge16
  */
 public class Artist {
     
+    private static Graphics brush;
+    
+    public Artist(){
+   
+        
+    }
+    
+    public static void Render(){
+    
+        Map.render(brush);
+        Player.render(brush);
+        Enemies.render(brush);
+    
+    }
+
+    public void setBrush(Graphics brush) {
+        this.brush = brush;
+    }
+
 }

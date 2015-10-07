@@ -6,10 +6,15 @@
 
 package Entities;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author muge16
  */
 public class Enemies {
-    
+
+    public static void render(Graphics brush) {
+    }
+
 }

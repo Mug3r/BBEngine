@@ -6,10 +6,21 @@
 
 package Map;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author muge16
  */
 public class Map {
+
+    private Tiles[] TileMap;
     
-}
+    public Map(int width, int height, int tilewidth, int tileheight){
+    
+    }
+    
+    public static void render(Graphics brush) {
+    }
+
+    }

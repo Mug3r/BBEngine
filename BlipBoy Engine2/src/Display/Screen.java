@@ -6,10 +6,21 @@
 
 package Display;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author muge16
  */
-public class Screen {
+public class Screen extends JPanel implements Runnable{
+
+
+    public void run() {
+        
+        
+        
+    }
+    
+    
     
 }
