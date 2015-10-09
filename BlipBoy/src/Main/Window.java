@@ -19,18 +19,24 @@ public class Window {
     
     public static int width, height;
     
-    public Window(String Title, int w, int h, JPanel Content){
+    public Window(String Title, int w, int h){
     
         width = w;
         height = h;
         
+        
+        start();
+    }
+    
+    public static void start(){
+    
         JFrame window = new JFrame();
         window.setSize(new Dimension(width, height));
-        window.setContentPane(Content);
-        window.setTitle(Title);
+        window.setContentPane(new Game(width, height));
+        window.setTitle("Blip Boy");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setBackground(Color.black);
+        
         window.setVisible(true);
         
     

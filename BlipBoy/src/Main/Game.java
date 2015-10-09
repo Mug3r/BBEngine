@@ -6,13 +6,12 @@
 
 package Main;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
@@ -31,6 +30,9 @@ public class Game extends JPanel implements Runnable{
     private BufferedImage image;
     private Graphics2D g;
     
+    private double averageFPS;
+    
+    private static final int FPS = 30;
     
     //CONSTRUCTOR
     public Game(int w, int h) {
@@ -67,7 +69,63 @@ public class Game extends JPanel implements Runnable{
                 RenderingHints.KEY_TEXT_ANTIALIASING,
                     RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             ;
+            
+            long startTime;
+            long URDTime;
+            long waitTime;
+            long totalTime = 0;
+            
+            int frameCount = 0;
+            int maxFrameCount = 30;
+            
+            long targetTime = 1000 / FPS;
+            
+            
+                while(running){
+                
+            startTime = System.nanoTime();
+                        
+            URDTime = (System.nanoTime() - startTime) / 1000000;
+            waitTime = targetTime - URDTime;
+            
+            
+            render();
+            draw();
+            
+            try{
+            thread.sleep(waitTime);}
+            catch(Exception e){
+            }
+            
+            totalTime += System.nanoTime() - startTime;
+            frameCount++;
+            if(frameCount == maxFrameCount){
+            averageFPS = 1000.0 / ((totalTime / frameCount)) / 1000000;
+            frameCount = 0;
+            totalTime = 0;
+            System.out.print("step");
+            }
+            
+            }
     }
+    
+    public void render(){
+        
+        
+        g.setColor(Color.BLACK);
+        g.dispose();
+      
+    
+    }
+    
+     private void draw(){
+            Graphics g2 = this.getGraphics();
+            g2.drawImage(image, 0, 0, null);
+            g2.dispose();
+            
+        }
+    
+    public void update(){}
 
    
 }

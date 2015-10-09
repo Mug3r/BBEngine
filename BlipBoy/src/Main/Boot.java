@@ -11,15 +11,14 @@ package Main;
  * @author muge16
  */
 public class Boot {
-    
-    private static  Game g;
+
     private static Window frame;
     public static final int WIDTH = 880, HEIGHT = 580;
     
      public static void main(String[]args){
          
-         g = new Game(WIDTH, HEIGHT);    
-        frame = new Window("Blip Boy", WIDTH, HEIGHT, g);
+    
+        frame = new Window("Blip Boy", WIDTH, HEIGHT);
     
     }
     
