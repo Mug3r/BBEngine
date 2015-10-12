@@ -32,14 +32,19 @@ public class Game extends JPanel implements Runnable{
     
     private double averageFPS;
     
-    private static final int FPS = 30;
+    public static int width,height;
+    
+    private static final int FPS = 60;
     
     //CONSTRUCTOR
     public Game(int w, int h) {
         super();
         setPreferredSize(new Dimension(w, h));
         setFocusable(true);
-        requestFocus();       
+        requestFocus(); 
+        
+        width = w;
+        height = h;
         
        }
     
@@ -69,7 +74,7 @@ public class Game extends JPanel implements Runnable{
                 RenderingHints.KEY_TEXT_ANTIALIASING,
                     RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
             ;
-            
+            //Ticks and Frames per second counter
             long startTime;
             long URDTime;
             long waitTime;
@@ -80,7 +85,7 @@ public class Game extends JPanel implements Runnable{
             
             long targetTime = 1000 / FPS;
             
-            
+            //Game Loop
                 while(running){
                 
             startTime = System.nanoTime();
@@ -89,9 +94,8 @@ public class Game extends JPanel implements Runnable{
             waitTime = targetTime - URDTime;
             
             
-            render();
-            draw();
-            
+            Render();
+         
             try{
             thread.sleep(waitTime);}
             catch(Exception e){
@@ -109,20 +113,19 @@ public class Game extends JPanel implements Runnable{
             }
     }
     
-    public void render(){
-        
-        
-        g.setColor(Color.BLACK);
-        g.dispose();
-      
     
-    }
-    
-     private void draw(){
-            Graphics g2 = this.getGraphics();
-            g2.drawImage(image, 0, 0, null);
-            g2.dispose();
+     //Draw Content
+     private void Render(){
+         //Setup
+            Graphics g = this.getGraphics();            
+            g.drawImage(image, 0, 0, null);
+         //Background
+            g.setColor( new Color(50, 30, 90));
+            g.fillRect(0, 0, width, height);
+         //Draw Here
             
+         //End Draw
+            g.dispose();            
         }
     
     public void update(){}
