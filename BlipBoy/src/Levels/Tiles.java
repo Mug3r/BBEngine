@@ -12,6 +12,59 @@ package Levels;
  */
 public class Tiles {
     
-    public Tiles(int tileNumber, int xco, int yco, int type){}
+    private int x, y;
+    private boolean up = false, dn = false, lt = false, rt = false;
+    private int speed;
+    
+    
+    public Tiles(int tN, int xco, int yco, int type){
+    
+        x = xco;
+        y = yco;
+        
+        
+    }
+
+    public void Update() {
+        
+       if(up){
+           
+           y -= speed;
+       
+       }else if(dn){
+       
+           y += speed;
+           
+       }
+       
+       if(lt){
+       
+           x -= speed;
+       
+       }else if(rt){
+       
+           x += speed;
+           
+       }
+        
+    }
+                
+        
+    
+    
+    public void Render(){
+    
+        
+    
+    }
+
+    public void setUp(boolean u) {up = u;}
+    public void setDn(boolean d) {dn = d;}
+    public void setLt(boolean l) {lt = l;}
+    public void setRt(boolean r) {rt = r;}
+
+    public void setSpeed(int s) {speed = s;}
+    
+    
     
 }
