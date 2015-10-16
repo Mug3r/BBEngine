@@ -13,7 +13,7 @@ package Main;
 public class Boot {
 
     private static Window frame;
-    public static final int WIDTH = 880, HEIGHT = 580;
+    public static final int WIDTH = 832, HEIGHT = 640;
     
      public static void main(String[]args){
          

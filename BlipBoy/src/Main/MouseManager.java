@@ -17,7 +17,10 @@ public class MouseManager implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-System.out.println("click");    }
+    
+        if(e.getButton() == MouseEvent.BUTTON2){
+    
+        }    }
 
     @Override
     public void mousePressed(MouseEvent e) {
