@@ -1,61 +1,68 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Entities;
 
 import Graphics.ImageManager;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Mug3r
- */
+
 public class Player {
     
-    private BufferedImage player;
+    public BufferedImage player;
+    
+    
     private ImageManager im;
-    private static int dir = 1;
-    public static int x = 0, y = 0;
+    public static int dir = 1;
+    public static int x = 0, y = 0, h = 0;
     private double health;
     private boolean running = false;
     private static boolean up = false, dn = false, lt = false, rt = false;
+    public static boolean collidedx = false, collidedy = false;
     
     public Player(int xco, int yco, ImageManager im){
     
         this.im = im;
         x = xco;
         y = yco;
-
+        
         
     }
     
     public void update(){
-    
+        
+        
+        
             //Forward
                 if(up){
-                x += 2;
-                y -= 1;}
+                if(!collidedx){x += 2;}
+                if(!collidedy){y -= 1;}
+                }
             //Back
                 else if(dn){
-                y += 1;
-                x -= 2;}
+                if(!collidedy){y += 1;}
+                if(!collidedx){x -= 2;}
+                
+                }
+        
+                
+       
             //Left
-                else if(lt){
-                y -= 1;
-                x -= 2;}
+                if(!up && !dn && lt){
+                if(!collidedy){y -= 1;}
+                if(!collidedx){x -= 2;}
+                }
             //Right
-                else if(rt){
-                y += 1;
-                x += 2;}
+                else if(!up && !dn && rt){
+                if(!collidedy){y += 1;}
+                if(!collidedx){x += 2;}}
+        
+                
+                
         
     }
     
     public void Render(Graphics g){
-    
-        g.drawImage(player, x, y, null);
+        
+        
         switch (dir){
             //Void
             case 0:
@@ -78,8 +85,13 @@ public class Player {
                 player = im.player[3];
                 break;
         }
+        
+        g.drawImage(player, x, y, null);
+        
     
     }
+    
+    
     
     public static void setDir(int d){dir = d;}
     
@@ -87,6 +99,12 @@ public class Player {
     public static void setDn(boolean d) {dn = d; setDir(2);}
     public static void setLt(boolean l) {lt = l; setDir(3);}
     public static void setRt(boolean r) {rt = r; setDir(4);}
+  
+
+    public static boolean isUp() {return up;}
+    public static boolean isDn() {return dn;}
+    public static boolean isLt() {return lt;}
+    public static boolean isRt() {return rt;}   
     
     
 }

@@ -1,30 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Main;
 
+import Graphics.Camera;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-/**
- *
- * @author muge16
- */
 public class MouseManager implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
     
         if(e.getButton() == MouseEvent.BUTTON2){
-    
-        }    }
+            Camera.moveCamera(e.getX(), e.getY());
+        }    
+    }
 
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println("Pressed");
+        if(e.getButton() == MouseEvent.BUTTON3){
+            Camera.moveCamera(e.getX(), e.getY());
+        }
     }
 
     @Override

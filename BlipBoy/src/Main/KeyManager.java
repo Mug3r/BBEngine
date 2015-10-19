@@ -1,24 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Main;
 
 import Entities.Player;
+import Graphics.Camera;
 import Levels.Map;
 import Levels.Tiles;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-/**
- *
- * @author muge16
- */
+
 public class KeyManager implements KeyListener {
 
    public static boolean listen = true;
+   private static int dir = 1;
     
     
     public void keyTyped(KeyEvent e) {
@@ -30,44 +23,52 @@ public class KeyManager implements KeyListener {
    
     public void keyPressed(KeyEvent e) {
     
-    if(listen){
         if(e.getKeyCode() == KeyEvent.VK_W){
+            dir = 1;
             Player.setUp(true);
             }
                 else if(e.getKeyCode() == KeyEvent.VK_S){
+                    dir = 2;
                     Player.setDn(true);
+                  
                     }
                
         if(e.getKeyCode() == KeyEvent.VK_A){
+            dir = 3;
             Player.setLt(true);
             }
                 else if(e.getKeyCode() == KeyEvent.VK_D){
+                    dir = 4;
                     Player.setRt(true);
                     }
         
-        }
+        
+        
     }
         
 
    
     public void keyReleased(KeyEvent e) {
     
-    if(listen){
         if(e.getKeyCode() == KeyEvent.VK_W){
-            Map.setUp(false);
-            Player.setUp(false);}
+            Player.setUp(false);
+            }
                 else if(e.getKeyCode() == KeyEvent.VK_S){
-                    Map.setDn(false);
-                    Player.setDn(false);}
-               
+                    Player.setDn(false);                   
+                    }
         if(e.getKeyCode() == KeyEvent.VK_A){
-            Map.setLt(false);
-            Player.setLt(false);}
+            Player.setLt(false);
+            }
                 else if(e.getKeyCode() == KeyEvent.VK_D){
-                   Map.setRt(false);
-                   Player.setRt(false);}
+                    Player.setRt(false);
+                    }
         
+
     }
+    
+    public static void update(){
+    
+        Player.setDir(dir);
     
     }
     

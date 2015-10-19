@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Main;
 
 import Entities.Player;
@@ -22,10 +16,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 
-/**
- *
- * @author muge16
- */
 public class Game extends Canvas implements Runnable{
     
     private Thread thread;
@@ -42,11 +32,11 @@ public class Game extends Canvas implements Runnable{
     public static int width,height;
     
     private static int FPS = 60;
-    private static int TPS = 60;
+    private static int TPS = 100;
     private ImageLoader il;
     private ImageManager im;
     private spriteSheet ss;
-    private String spriteSheetURL = "/SS2.png";
+    private String spriteSheetURL = "/SpriteSheet2.png";
     
     private Map map;
     private String[] maps;
@@ -122,7 +112,8 @@ public class Game extends Canvas implements Runnable{
                Update();
                ticks++;
                delta--;
-           }           
+           }
+           
            Render();
            frames++;
            
@@ -164,7 +155,8 @@ public class Game extends Canvas implements Runnable{
         }
     
      private void Update(){
-         
+        
+        KeyManager.update();
         player.update();
         map.update();
         

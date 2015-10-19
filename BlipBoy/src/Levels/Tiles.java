@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package Levels;
 
@@ -12,16 +7,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author muge16
- */
 public class Tiles {
     
     private int x, y;
     private boolean up = false, dn = false, lt = false, rt = false, walkable = false;
-    private int speed = 1;
+    private int speed = 1, height = 0;
     private BufferedImage tile;
+    
     
     
     
@@ -39,35 +31,47 @@ public class Tiles {
             case 1:
                tile = im.flats[0];
                walkable = true;
+               height = 0;
                break;
             case 2:
                tile = im.flats[1];
                walkable = true;
+               height = 1;
                break;
             case 3:
                tile = im.flats[2];
+               height = 2;
                break;
+                
             case 4:
                tile = im.slopes[0];
+               height = 0;
                break;
             case 5:   
                tile = im.slopes[1];
+               height = 0;
                break;
             case 6:
                tile = im.slopes[2];
+               height = 0;
                 break;
             case 7:
                tile = im.slopes[3];
+                height = 0;
             case 8:
                tile = im.Eslopes[0];
+                height = 1;
             case 9:
                tile = im.Eslopes[1];
+               height = 1;
                 break;
             case 10:
                tile = im.Eslopes[2];
+               height = 1;
                break;
             case 11:
                tile = im.Eslopes[3];
+               height = 1;
                break;
         }
         
@@ -78,26 +82,26 @@ public class Tiles {
         
        if(up){
            
-           y += 3;
-           x -= 6;
+           y += 2;
+           x -= 4;
            
        
        }else if(dn){
        
-           y -= 3;
-           x += 6;
+           y -= 2;
+           x += 4;
            
        }
        
        if(lt){
        
-           y += 3;
-           x += 6;
+           y += 2;
+           x += 4;
        
        }else if(rt){
        
-           y -= 3;
-           x -= 6;
+           y -= 2;
+           x -= 4;
            
        }
         
@@ -126,9 +130,7 @@ public class Tiles {
     public int getY() {
         return y;
     }
-    
-    
-    
+       
     
     
 }

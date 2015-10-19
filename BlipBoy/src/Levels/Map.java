@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Levels;
 
 import Entities.Player;
@@ -17,10 +11,6 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author muge16
- */
 public class Map {
     
     public static Tiles[] tiles = new Tiles[1483];
@@ -68,10 +58,10 @@ public class Map {
                     if(!spawnSet){spawnLocation[0] = s.nextInt();
                                   spawnLocation[1] = s.nextInt();
                                   spawnSet = true;
-                                  camera = new Camera();}
+                                  camera = new Camera(spawnLocation[0], spawnLocation[1]);}
                     else{
                     
-                    int tileX = ((stepX)*63 - 32*row) + 1000;               
+                    int tileX = ((stepX)*64 - 32*row) + 1000;               
                     int tileY = ((stepY)*63 - (47*(stepY))) - 250;
                     
                    int tileType = s.nextInt();
@@ -168,12 +158,12 @@ public class Map {
         Map.rt = rt;
     }
 
-    public static Tiles[] getTiles() {
-        return tiles;
+    public static Tiles getTiles(int x, int y) {
+        for(int i = 0; i < tiles.length; i++){
+            if(tiles[i].getX() >= x + 64 && tiles[i].getX() <= x + 128 && tiles[i].getY() >= y + 32 && tiles[i].getY() <= y + 64){
+                return tiles[i];
+            }
+        }
+        return null;
     }
-    
-    
-    
-    
-    
 }
